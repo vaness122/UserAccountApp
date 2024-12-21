@@ -48,7 +48,7 @@ namespace UserAccountApp
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 var selectedRow = dataGridView1.SelectedRows[0];
-                var userId = (int)selectedRow.Cells["UserId"].Value; // Assuming "UserId" is the column name
+                var userId = (int)selectedRow.Cells["UserId"].Value; 
 
                 try
                 {

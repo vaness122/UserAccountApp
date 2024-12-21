@@ -46,7 +46,6 @@ namespace UserAccountApp
 
                 using (var context = new UserAccountDbContext())
                 {
-                    // Ensure the address is linked to the user (optional if there's a foreign key)
                     user.Address = address;
 
                     context.Users.Add(user);
@@ -78,7 +77,7 @@ namespace UserAccountApp
                 // Show the ViewUser form
                 viewUserForm.ShowDialog();
 
-                // Optionally, show the RegistrationForm again after the ViewUser form is closed
+                
                 this.Show();
             }
             catch (Exception ex)
