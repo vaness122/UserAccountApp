@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserAccountApp.Data;
 
@@ -27,18 +22,31 @@ namespace UserAccountApp
         {
             try
             {
-
                 using (var context = new UserAccountDbContext())
                 {
-                    var users = context.Users.ToList(); // Fetch all users from the Users table
+                    // Fetch all users and their associated addresses
+                    var users = context.Users
+                        .Include(u => u.Address)  // Include the related Address data
+                        .ToList();
 
-                    // Bind the users list to the DataGridView
-                    dataGridView1.DataSource = users;
+                    // Create a list of anonymous objects to display in the DataGridView
+                    var userList = users.Select(u => new
+                    {
+                        u.UserId,
+                        u.FullName,
+                        u.UserName,
+                        u.Email,
+                        Address = u.Address != null ?
+                                  $"{u.Address.Street}, {u.Address.City}, {u.Address.Region}, {u.Address.Country}" :
+                                  "No Address"
+                    }).ToList();
+
+                    // Bind the data to the DataGridView
+                    dataGridView1.DataSource = userList;
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("An error occurred while loading users: " + ex.Message);
             }
         }
@@ -48,7 +56,7 @@ namespace UserAccountApp
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 var selectedRow = dataGridView1.SelectedRows[0];
-                var userId = (int)selectedRow.Cells["UserId"].Value; 
+                var userId = (int)selectedRow.Cells["UserId"].Value;
 
                 try
                 {
@@ -84,7 +92,7 @@ namespace UserAccountApp
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 var selectedRow = dataGridView1.SelectedRows[0];
-                var userId = (int)selectedRow.Cells["UserId"].Value; // Assuming "UserId" is the column name
+                var userId = (int)selectedRow.Cells["UserId"].Value; 
 
                 // Open a new form to update user details
                 var updateForm = new UpdateUserForm(userId);
@@ -99,5 +107,4 @@ namespace UserAccountApp
             }
         }
     }
-    }
-
+}

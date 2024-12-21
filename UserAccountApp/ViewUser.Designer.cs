@@ -30,8 +30,6 @@
         {
             label1 = new Label();
             dataGridView1 = new DataGridView();
-            label2 = new Label();
-            txtUserId = new TextBox();
             BtnUpdate = new Button();
             BtnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -41,7 +39,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(177, 44);
+            label1.Location = new Point(186, 47);
             label1.Name = "label1";
             label1.Size = new Size(147, 18);
             label1.TabIndex = 0;
@@ -55,27 +53,9 @@
             dataGridView1.Size = new Size(457, 150);
             dataGridView1.TabIndex = 1;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(72, 271);
-            label2.Name = "label2";
-            label2.Size = new Size(53, 15);
-            label2.TabIndex = 2;
-            label2.Text = "User Id";
-            // 
-            // txtUserId
-            // 
-            txtUserId.Font = new Font("Segoe UI", 7F);
-            txtUserId.Location = new Point(131, 266);
-            txtUserId.Name = "txtUserId";
-            txtUserId.Size = new Size(86, 20);
-            txtUserId.TabIndex = 3;
-            // 
             // BtnUpdate
             // 
-            BtnUpdate.Location = new Point(72, 320);
+            BtnUpdate.Location = new Point(332, 270);
             BtnUpdate.Name = "BtnUpdate";
             BtnUpdate.Size = new Size(75, 23);
             BtnUpdate.TabIndex = 4;
@@ -85,7 +65,7 @@
             // 
             // BtnDelete
             // 
-            BtnDelete.Location = new Point(153, 320);
+            BtnDelete.Location = new Point(413, 270);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 23);
             BtnDelete.TabIndex = 5;
@@ -100,8 +80,6 @@
             ClientSize = new Size(513, 400);
             Controls.Add(BtnDelete);
             Controls.Add(BtnUpdate);
-            Controls.Add(txtUserId);
-            Controls.Add(label2);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "ViewUser";
@@ -116,8 +94,6 @@
 
         private Label label1;
         private DataGridView dataGridView1;
-        private Label label2;
-        private TextBox txtUserId;
         private Button BtnUpdate;
         private Button BtnDelete;
     }
