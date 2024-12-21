@@ -27,7 +27,7 @@ namespace UserAccountApp.Models
 
         [Required]
         [PasswordPropertyText]
-        [StringLength(50, MinimumLength = 6)] // Example: password length restriction
+        [StringLength(50, MinimumLength = 6)] 
         public string Password { get; set; }
 
         public Address Address { get; set; }

@@ -47,10 +47,10 @@ namespace UserAccountApp
                 using (var context = new UserAccountDbContext())
                 {
                     // Ensure the address is linked to the user (optional if there's a foreign key)
-                    user.Address = address; // Assuming the User model has an Address property or set the foreign key
+                    user.Address = address;
 
                     context.Users.Add(user);
-                    context.Addresses.Add(address); // Add this if Address is not already linked to the user.
+                    context.Addresses.Add(address);
 
                     // Save the changes to the database
                     context.SaveChanges();
@@ -65,5 +65,27 @@ namespace UserAccountApp
             }
         }
 
+        private void BtnUsers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Create an instance of the ViewUser form
+                ViewUser viewUserForm = new ViewUser();
+
+                // Hide the current form (RegistrationForm)
+                this.Hide();
+
+                // Show the ViewUser form
+                viewUserForm.ShowDialog();
+
+                // Optionally, show the RegistrationForm again after the ViewUser form is closed
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+                // Display the error message if navigation fails
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
     }
 }

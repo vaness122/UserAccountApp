@@ -19,7 +19,7 @@ namespace UserAccountApp.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)  // Only configure if not already configured
+            if (!optionsBuilder.IsConfigured) 
             {
                 optionsBuilder.UseSqlServer("Server=DESKTOP-AOJDK8M;Database=UserAccountDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True");
             }
